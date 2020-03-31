@@ -1,0 +1,4 @@
+service:
+  baseUrl: https://services-ontwikkel.dov.vlaanderen.be/
+  proxyHost: 
+  proxyPort: 

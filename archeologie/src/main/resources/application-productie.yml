@@ -1,0 +1,4 @@
+service:
+  baseUrl: https://services.dov.vlaanderen.be/
+  proxyHost: 
+  proxyPort: 

@@ -1,0 +1,7 @@
+.svn
+**/.settings
+**/.project
+**/.classpath
+**/target
+application-personal.yml
+dovservices-ontwikkel.jks

@@ -1,0 +1,4 @@
+service:
+  baseUrl: https://services-oefen.dov.vlaanderen.be/
+  proxyHost: 
+  proxyPort: 

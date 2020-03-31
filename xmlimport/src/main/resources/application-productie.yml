@@ -1,0 +1,8 @@
+service:
+  baseUrl: https://services.dov.vlaanderen.be/
+  keystoreType: JKS
+  keystoreLocation: 
+  keystorePassword: 
+  certificatePassword: 
+  proxyHost: 
+  proxyPort: 

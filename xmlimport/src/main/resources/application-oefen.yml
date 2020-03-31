@@ -1,0 +1,8 @@
+service:
+  baseUrl: https://services-oefen.dov.vlaanderen.be/
+  keystoreType: JKS
+  keystoreLocation: 
+  keystorePassword: 
+  certificatePassword: 
+  proxyHost: 
+  proxyPort: 

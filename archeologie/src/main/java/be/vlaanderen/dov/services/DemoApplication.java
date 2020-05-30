@@ -18,11 +18,6 @@ import be.vlaanderen.dov.services.validatie.dto.ValidationResponse;
 import be.vlaanderen.dov.services.validatie.example.ValidateXml;
 
 /**
- * Demo applicatie die aan de hand van de certificaten in een keystore beveiligde request naar de dov-services doet om
- * een xml op te laden, te valdieren, aan te leveren en op te volgen.
- * <p>
- * Meer informatie over de service
- * https://www.milieuinfo.be/confluence/display/DDOV/Case+1%3A+Opladen+van+XML-bestanden+voor+boorbedrijven
  *
  */
 @SpringBootApplication(scanBasePackages = { "be.vlaanderen.dov.services.xmlimport" })
@@ -34,7 +29,7 @@ public class DemoApplication implements CommandLineRunner {
 
     @Bean
     public ClientConfig clientConfig() {
-        // validation service is public, so no need for ceritificates)
+        // validation service is public, so no need for certificates)
         return new ClientConfig(false);
     }
 

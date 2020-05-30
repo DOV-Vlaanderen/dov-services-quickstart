@@ -175,11 +175,13 @@ public class DemoApplication implements CommandLineRunner {
 
         // download directly as csv
         DownloadSensordataAsFile downloadCsv = new DownloadSensordataAsFile(DownloadType.CSV);
+        downloadCsv.downloadAll(clientConfig(), instrumentPermKey, sensorId);
         downloadCsv.downloadQuery(clientConfig(), instrumentPermKey, sensorId, OffsetDateTime.now(), null, null);
 
         // download directly as zip
         DownloadSensordataAsFile downloadZip = new DownloadSensordataAsFile(DownloadType.ZIP);
-        downloadZip.downloadQuery(clientConfig(), instrumentPermKey, sensorId, OffsetDateTime.now(), null, null);
+        downloadZip.downloadAll(clientConfig(), instrumentPermKey, sensorId);
+        downloadZip.downloadQuery(clientConfig(), instrumentPermKey, sensorId, null, OffsetDateTime.now(), null);
 
         // *********************************************************************************************//
         // Demo 6: How to download filterdata
@@ -211,11 +213,12 @@ public class DemoApplication implements CommandLineRunner {
 
         // download as csv
         DownloadFilterdataAsFile filterCsv = new DownloadFilterdataAsFile(DownloadType.CSV);
-        filterCsv.downloadQuery(clientConfig(), filterPermKey, sensortype, OffsetDateTime.now(), null, null);
+        filterCsv.downloadAll(clientConfig(), filterPermKey, sensortype);
+        filterCsv.downloadQuery(clientConfig(), filterPermKey, sensortype, null, OffsetDateTime.now(), null);
 
         // download as zip
         DownloadFilterdataAsFile filterZip = new DownloadFilterdataAsFile(DownloadType.ZIP);
+        filterZip.downloadAll(clientConfig(), filterPermKey, sensortype);
         filterZip.downloadQuery(clientConfig(), filterPermKey, sensortype, OffsetDateTime.now(), null, null);
-
     }
 }

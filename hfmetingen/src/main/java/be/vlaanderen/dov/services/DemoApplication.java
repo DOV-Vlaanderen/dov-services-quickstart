@@ -36,10 +36,10 @@ import be.vlaanderen.dov.services.hfmetingen.example.UploadStatusCheck;
 
 /**
  * Demo applicatie die aan de hand van de certificaten in een keystore beveiligde request naar de dov-services doet om
- * een xml op te laden, te valdieren, aan te leveren en op te volgen.
+ * te communiceren met de DOV hoog frequente metingen API.
  * <p>
  * Meer informatie over de service
- * https://www.milieuinfo.be/confluence/display/DDOV/Case+1%3A+Opladen+van+XML-bestanden+voor+boorbedrijven
+ * https://www.milieuinfo.be/confluence/display/DDOV/Case+2%3A+Hoog+frequente+metingen
  *
  */
 @SpringBootApplication(scanBasePackages = { "be.vlaanderen.dov.services.hfmetingen" })

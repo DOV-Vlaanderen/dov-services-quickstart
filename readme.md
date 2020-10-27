@@ -25,6 +25,3 @@ De klasse **hfmetingen/src/main/java/be/vlaanderen/dov/services/DemoApplication*
   
 Een uitgebreidere beschrijving van de services is te vinden op de [DOV confluence](https://www.milieuinfo.be/confluence/display/DDOV/Case+2%3A+Hoog+frequente+metingen).
 
-## Configuratie 
-#### Keystore
-Plaats een geldig keystore   

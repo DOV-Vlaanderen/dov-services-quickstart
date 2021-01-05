@@ -3,6 +3,6 @@ service:
   keystoreType: JKS
   keystoreLocation: 
   keystorePassword: 
-  certificatePassword: 
+  certificatePassword:  
   proxyHost: 
-  proxyPort: 
+  proxyPort:  

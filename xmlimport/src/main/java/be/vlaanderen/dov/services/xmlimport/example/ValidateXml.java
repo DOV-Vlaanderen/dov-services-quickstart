@@ -30,7 +30,7 @@ public class ValidateXml {
 
     protected static String UPLOAD_USERNAME = "demo-user"; // naam van de gebruiker
 
-    protected static String UPLOAD_KBONUMMER = "0658786782"; // kbo nummer van boorbedrijf
+    protected static String UPLOAD_KBONUMMER = "0414460412"; //"0658786782"; // kbo nummer van boorbedrijf
 
     protected static String UPLOAD_BESCHRIJVING = "opladen data van december"; // beschrijving van de import
 

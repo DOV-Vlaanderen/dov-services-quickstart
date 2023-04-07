@@ -4,13 +4,14 @@ package be.vlaanderen.dov.services.xmlimport.example;
 import java.io.IOException;
 import java.util.Date;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.EntityBuilder;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.EntityBuilder;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,8 @@ public class ValidateXml {
      * @throws IOException
      * @throws ClientProtocolException
      */
-    public ValidationResponse validate(ClientConfig cc, UploadedFile file) throws ClientProtocolException, IOException {
+    public ValidationResponse validate(ClientConfig cc, UploadedFile file)
+            throws ClientProtocolException, IOException, ParseException {
 
         HttpPost httpPost = new HttpPost(cc.getBaseUrl() + VALIDATION_URL);
         EntityBuilder builder = EntityBuilder.create();
@@ -56,7 +58,7 @@ public class ValidateXml {
 
         String entityAsString = EntityUtils.toString(responseEntity);
         LOG.debug("Content: {}", entityAsString);
-        if (response.getStatusLine().getStatusCode() == 200) {
+        if (response.getCode() == 200) {
             return cc.getMapper().readerFor(ValidationResponse.class).readValue(entityAsString);
         }
         return null;

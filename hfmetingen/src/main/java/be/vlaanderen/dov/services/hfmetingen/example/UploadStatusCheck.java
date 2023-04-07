@@ -3,7 +3,7 @@ package be.vlaanderen.dov.services.hfmetingen.example;
 
 import java.io.IOException;
 
-import org.apache.http.client.ClientProtocolException;
+import org.apache.hc.client5.http.ClientProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;

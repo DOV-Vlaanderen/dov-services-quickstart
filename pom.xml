@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.0.5</version>
 		<relativePath />
 	</parent>
 	<groupId>be.vlaanderen.dov</groupId>
@@ -19,7 +19,7 @@
 	<description>demo applications based on standard spring boot applications to demonstrate how to use the dov services</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
 
     <modules>

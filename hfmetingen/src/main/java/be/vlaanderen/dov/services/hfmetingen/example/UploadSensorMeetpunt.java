@@ -6,13 +6,15 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.EntityBuilder;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.EntityBuilder;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -38,7 +40,8 @@ public class UploadSensorMeetpunt {
      * @throws ClientProtocolException
      * @return a reference to the uploaded file. The id is needed for all future request.
      */
-    public UploadResponse upload(ClientConfig cc, String instrument, String sensorId) throws ClientProtocolException, IOException {
+    public UploadResponse upload(ClientConfig cc, String instrument, String sensorId)
+            throws ClientProtocolException, IOException, ParseException {
 
         HttpPost httpPost = new HttpPost(base(cc, instrument, sensorId).build().toUri());
 
@@ -56,7 +59,7 @@ public class UploadSensorMeetpunt {
 
         String entityAsString = EntityUtils.toString(responseEntity);
         LOG.debug("Content: {}", entityAsString);
-        if (response.getStatusLine().getStatusCode() == 200) {
+        if (response.getCode() == 200) {
             return cc.getMapper().readerFor(UploadResponse.class).readValue(entityAsString);
         }
         return null;

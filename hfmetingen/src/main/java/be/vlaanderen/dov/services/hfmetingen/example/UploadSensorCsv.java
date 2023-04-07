@@ -8,16 +8,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.apache.hc.client5.http.ClientProtocolException;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import be.vlaanderen.dov.services.config.ClientConfig;
 import be.vlaanderen.dov.services.hfmetingen.dto.Meetpunt;
@@ -55,7 +56,7 @@ public class UploadSensorCsv extends UploadSensorMeetpunten {
      * @return a reference to the uploaded file. The id is needed for all future request.
      */
     @Override
-    public UploadResponse upload(ClientConfig cc, String instrument, String sensorId) throws ClientProtocolException, IOException {
+    public UploadResponse upload(ClientConfig cc, String instrument, String sensorId) throws ClientProtocolException, IOException, ParseException {
 
         // create the csv file
         File f = createCSV();
@@ -72,7 +73,7 @@ public class UploadSensorCsv extends UploadSensorMeetpunten {
         CloseableHttpResponse response = cc.getHttpClient().execute(httpPost);
         HttpEntity responseEntity = response.getEntity();
 
-        if (response.getStatusLine().getStatusCode() == 200 && responseEntity != null) {
+        if (response.getCode() == 200 && responseEntity != null) {
             String entityAsString = EntityUtils.toString(responseEntity);
             LOG.debug("Content: {}", entityAsString);
             return cc.getMapper().readerFor(UploadResponse.class).readValue(entityAsString);
